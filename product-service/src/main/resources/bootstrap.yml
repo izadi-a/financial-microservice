@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: product-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+    vault:
+      host: localhost
+      port: 8200
+      scheme: http
+      authentication: token
+      token: s.MxO0RvJHVfSKBBqYSCl1TPO8
+      application-name: order-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/product-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 0
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
