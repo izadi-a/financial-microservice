@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: inventory-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+    vault:
+      host: localhost
+      port: 8200
+      scheme: http
+      authentication: token
+      token: s.y5RaxNLI3MBGKwtf4Lwmz3J5
+      application-name: ${spring.application.name}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 8183
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
